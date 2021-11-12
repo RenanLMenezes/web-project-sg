@@ -7,9 +7,23 @@ html(lang="pt-BR")
         title Duran Duran | Produtos
     body 
         header
-            img(src="/logo.svg", alt="logo")
+            img(src="/logo.svg", alt="logo", width="100px")
         nav 
             a(href="/") Página Inicial 
             a(href="/catalogar") Catalogar  
         main 
-            
+            div(class=" catalogo")
+                if produto
+                    div(class="produto")
+                        div(class="produto-rodape")
+                            h1 #{ produto.nome }
+                            span #{ produto.marca }
+                        div(class="produto-rodape")
+                            img(src=produto.imagem, alt="imagem do produtso", width="200px")
+                            h2 #{ produto.preco }
+                            a(href=`/excluir/${ produto.codigo}`) Excluir produto
+                            |
+                            a(href=`/editar/${ produto.codigo}`) editar produto
+                else    
+                    | produto não tem        
+                

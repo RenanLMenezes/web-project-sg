@@ -11,16 +11,24 @@ router.get("/", function(req, res) {
 
         console.log(resultados.rows)
 
-        res.render("index.pug", { resultados })
+        res.render("index.pug", { prod: resultados.rows })
 
     })
 })
 
-router.get("/produto/:id", function(req, res) {
+router.get("/excluir/:codigo", function(req, res) {
+    produtos.Excluir(req.params.codigo)
+    res.redirect("back")
+})
 
-    console.log(req.params.id)
+router.get("/produto/:codigo", function(req, res) {
 
-    res.render("produto.pug")
+    produtos.Procurar(req.params.codigo)
+    .then(function(resultado) {
+        res.render("produto.pug", { produto: resultado.rows[0]})
+    })
+
+    
 })
 
 router.get("/catalogar", function(req, res) {
