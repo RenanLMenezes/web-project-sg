@@ -32,4 +32,16 @@ async function Excluir(codigo){
     return resultado
 }
 
-export default { Catalogar, Listar, Excluir, Procurar }
+async function AtualizarNome(codigo, novoNome){
+    const comando = "UPDATE produtos SET nome = $1 WHERE codigo = $2"
+    const resultado = conexao.query(comando, [ novoNome, codigo ])
+    return resultado
+}
+
+async function AtualizarPrecoImagem(codigo, novoPreco, novoImagem){
+    const comando = "UPDATE produtos SET preco = $1, imagem = $2 WHERE codigo = $3"
+    const resultado = conexao.query(comando, [ novoPreco, novoImagem, codigo ])
+    return resultado
+}
+
+export default { Catalogar, Listar, Excluir, Procurar, AtualizarNome }

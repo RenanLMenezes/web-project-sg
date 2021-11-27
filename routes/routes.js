@@ -35,6 +35,11 @@ router.get("/catalogar", function(req, res) {
     res.render("catalogar.pug")
 })
 
+router.get("/atualizar/:codigo", function(req, res) {
+    const codigo = req.params.codigo
+    res.render("atualizar.pug", { codigo })
+})
+
 //ROTAS POST
 router.post("/produto", function(req, res) {
 
@@ -52,6 +57,12 @@ router.post("/produto", function(req, res) {
         })
 
     res.redirect("/catalogar")
+})
+
+router.post("/atualizarnome", function(req,res){
+    const { codigo, nome } = req.body
+    produtos.AtualizarNome(codigo, nome)
+    res.redirect("back")
 })
 
 export default router

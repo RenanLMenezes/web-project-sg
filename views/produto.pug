@@ -22,8 +22,8 @@ html(lang="pt-BR")
                             img(src=produto.imagem, alt="imagem do produtso", width="200px")
                             h2 #{ produto.preco }
                             a(href=`/excluir/${ produto.codigo}`) Excluir produto
-                            |
-                            a(href=`/editar/${ produto.codigo}`) editar produto
+                            br
+                            a(href=`/atualizar/${ produto.codigo}`) editar produto
                 else    
                     | produto não tem        
                 
